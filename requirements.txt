@@ -1,0 +1,3 @@
+ezapi-icc-pro==0.1.0
+plotly==5.13.1
+streamlit==1.19.0
