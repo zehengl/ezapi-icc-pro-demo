@@ -1,4 +1,4 @@
-from datetime import time
+from datetime import date, time
 
 import pandas as pd
 import streamlit as st
@@ -174,7 +174,7 @@ label, left, right = st.columns([1, 2, 2])
 with label:
     st.text_input("", "From", disabled=True, key="from_analog_inputs")
 with left:
-    fromdate = st.date_input("Date", key="fromdate_analog_inputs")
+    fromdate = st.date_input("Date", date(2022, 1, 1), key="fromdate_analog_inputs")
 with right:
     fromtime = st.time_input("Time", time(0, 0), key="fromtime_analog_inputs")
 
@@ -184,7 +184,7 @@ label, left, right = st.columns([1, 2, 2])
 with label:
     st.text_input("", "To", disabled=True, key="to_analog_inputs")
 with left:
-    todate = st.date_input("Date", key="todate_analog_inputs")
+    todate = st.date_input("Date", date(2022, 12, 31), key="todate_analog_inputs")
 with right:
     totime = st.time_input("Time", time(23, 59), key="totime_analog_inputs")
 
@@ -239,7 +239,7 @@ label, left, right = st.columns([1, 2, 2])
 with label:
     st.text_input("", "From", disabled=True, key="from_sensors")
 with left:
-    fromdate = st.date_input("Date", key="fromdate_sensors")
+    fromdate = st.date_input("Date", date(2022, 1, 1), key="fromdate_sensors")
 with right:
     fromtime = st.time_input("Time", time(0, 0), key="fromtime_sensors")
 
@@ -249,7 +249,7 @@ label, left, right = st.columns([1, 2, 2])
 with label:
     st.text_input("", "To", disabled=True, key="to_sensors")
 with left:
-    todate = st.date_input("Date", key="todate_sensors")
+    todate = st.date_input("Date", date(2022, 12, 31), key="todate_sensors")
 with right:
     totime = st.time_input("Time", time(23, 59), key="totime_sensors")
 
