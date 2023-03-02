@@ -53,7 +53,7 @@ df = pd.DataFrame(valves_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Valves General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "valves_general_info.csv",
     "text/csv",
 )
@@ -64,7 +64,7 @@ df = pd.DataFrame(valves_gis_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Valves GIS Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "valves_gis_info.csv",
     "text/csv",
 )
@@ -78,7 +78,7 @@ df = pd.DataFrame(valves_status)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Valves Status CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     f"valves_status.csv",
     "text/csv",
 )
@@ -89,7 +89,7 @@ df = pd.DataFrame(meters_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Meters General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "meters_general_info.csv",
     "text/csv",
 )
@@ -100,7 +100,7 @@ df = pd.DataFrame(virtual_meters_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Meters General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "virtual_meters_general_info.csv",
     "text/csv",
 )
@@ -111,7 +111,7 @@ df = pd.DataFrame(programs_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Programs General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "programs_general_info.csv",
     "text/csv",
 )
@@ -122,7 +122,7 @@ df = pd.DataFrame(programs_detailed_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Programs Detailed Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "programs_detailed_info.csv",
     "text/csv",
 )
@@ -133,7 +133,7 @@ df = pd.DataFrame(analog_inputs_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Analog Inputs General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "analog_inputs_general_info.csv",
     "text/csv",
 )
@@ -146,7 +146,7 @@ df = pd.DataFrame(analog_inputs_current_data)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Analog Inputs Current Data CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "analog_inputs_current_data.csv",
     "text/csv",
 )
@@ -165,7 +165,7 @@ df = pd.concat(dfs, ignore_index=True)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Analog Inputs Historical Data CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "analog_inputs_historical_data.csv",
     "text/csv",
 )
@@ -177,7 +177,7 @@ df = pd.DataFrame(sensors_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Sensors General Info CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "sensors_general_info.csv",
     "text/csv",
 )
@@ -190,7 +190,7 @@ df = pd.DataFrame(sensors_current_data)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Sensors Current Data CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "sensors_current_data.csv",
     "text/csv",
 )
@@ -209,7 +209,7 @@ df = pd.concat(dfs, ignore_index=True)
 st.dataframe(df, use_container_width=True)
 st.download_button(
     "Download Sensors Historical Data CSV",
-    df.to_csv(),
+    df.to_csv(index=False),
     "sensors_historical_data.csv",
     "text/csv",
 )
@@ -228,7 +228,7 @@ st.download_button(
 # st.dataframe(df, use_container_width=True)
 # st.download_button(
 #     "Download Meters Historical Accumulations CSV",
-#     df.to_csv(),
+#     df.to_csv(index=False),
 #     "meters_historical_accumulations.csv",
 #     "text/csv",
 # )
@@ -247,7 +247,7 @@ st.download_button(
 # st.dataframe(df, use_container_width=True)
 # st.download_button(
 #     "Download Valves Historical Accumulations CSV",
-#     df.to_csv(),
+#     df.to_csv(index=False),
 #     "valves_historical_accumulations.csv",
 #     "text/csv",
 # )
