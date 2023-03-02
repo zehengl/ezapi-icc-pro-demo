@@ -1,3 +1,4 @@
+import io
 from datetime import date, time
 
 import pandas as pd
@@ -16,6 +17,13 @@ def make_datetime_str(date, time):
             f"{time.second}".zfill(2),
         ]
     )
+
+
+def make_excel(df):
+    buffer = io.BytesIO()
+    with pd.ExcelWriter(buffer) as writer:
+        df.to_excel(writer, index=False)
+    return buffer
 
 
 st.set_page_config(page_title="parks-irrigation", page_icon=":national_park:")
@@ -68,9 +76,9 @@ valves_general_info = iccpro.get_valves_general_info()
 df = pd.DataFrame(valves_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Valves General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "valves_general_info.csv",
+    "Download Valves General Info",
+    make_excel(df),
+    "valves_general_info.xlsx",
     "text/csv",
 )
 
@@ -79,9 +87,9 @@ valves_gis_info = iccpro.get_valves_gis_info()
 df = pd.DataFrame(valves_gis_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Valves GIS Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "valves_gis_info.csv",
+    "Download Valves GIS Info",
+    make_excel(df),
+    "valves_gis_info.xlsx",
     "text/csv",
 )
 
@@ -93,9 +101,9 @@ st.caption(f"Last Update at {last_update}")
 df = pd.DataFrame(valves_status)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Valves Status CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    f"valves_status.csv",
+    "Download Valves Status",
+    make_excel(df),
+    f"valves_status.xlsx",
     "text/csv",
 )
 
@@ -104,9 +112,9 @@ meters_general_info = iccpro.get_meters_general_info()
 df = pd.DataFrame(meters_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Meters General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "meters_general_info.csv",
+    "Download Meters General Info",
+    make_excel(df),
+    "meters_general_info.xlsx",
     "text/csv",
 )
 
@@ -115,9 +123,9 @@ virtual_meters_general_info = iccpro.get_virtual_meters_general_info()
 df = pd.DataFrame(virtual_meters_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Meters General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "virtual_meters_general_info.csv",
+    "Download Meters General Info",
+    make_excel(df),
+    "virtual_meters_general_info.xlsx",
     "text/csv",
 )
 
@@ -126,9 +134,9 @@ programs_general_info = iccpro.get_programs_general_info()
 df = pd.DataFrame(programs_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Programs General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "programs_general_info.csv",
+    "Download Programs General Info",
+    make_excel(df),
+    "programs_general_info.xlsx",
     "text/csv",
 )
 
@@ -137,9 +145,9 @@ programs_detailed_info = iccpro.get_programs_detailed_info()
 df = pd.DataFrame(programs_detailed_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Programs Detailed Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "programs_detailed_info.csv",
+    "Download Programs Detailed Info",
+    make_excel(df),
+    "programs_detailed_info.xlsx",
     "text/csv",
 )
 
@@ -148,9 +156,9 @@ analog_inputs_general_info = iccpro.get_analog_inputs_general_info()
 df = pd.DataFrame(analog_inputs_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Analog Inputs General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "analog_inputs_general_info.csv",
+    "Download Analog Inputs General Info",
+    make_excel(df),
+    "analog_inputs_general_info.xlsx",
     "text/csv",
 )
 
@@ -161,9 +169,9 @@ analog_inputs_current_data = resp["Data"]
 df = pd.DataFrame(analog_inputs_current_data)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Analog Inputs Current Data CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "analog_inputs_current_data.csv",
+    "Download Analog Inputs Current Data",
+    make_excel(df),
+    "analog_inputs_current_data.xlsx",
     "text/csv",
 )
 
@@ -201,9 +209,9 @@ for item in resp["Data"]:
 df = pd.concat(dfs, ignore_index=True)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Analog Inputs Historical Data CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "analog_inputs_historical_data.csv",
+    "Download Analog Inputs Historical Data",
+    make_excel(df),
+    "analog_inputs_historical_data.xlsx",
     "text/csv",
 )
 
@@ -213,9 +221,9 @@ sensors_general_info = iccpro.get_sensors_general_info()
 df = pd.DataFrame(sensors_general_info)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Sensors General Info CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "sensors_general_info.csv",
+    "Download Sensors General Info",
+    make_excel(df),
+    "sensors_general_info.xlsx",
     "text/csv",
 )
 
@@ -226,9 +234,9 @@ sensors_current_data = resp["Data"]
 df = pd.DataFrame(sensors_current_data)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Sensors Current Data CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "sensors_current_data.csv",
+    "Download Sensors Current Data",
+    make_excel(df),
+    "sensors_current_data.xlsx",
     "text/csv",
 )
 
@@ -266,9 +274,9 @@ for item in resp["Data"]:
 df = pd.concat(dfs, ignore_index=True)
 st.dataframe(df, use_container_width=True)
 st.download_button(
-    "Download Sensors Historical Data CSV",
-    df.to_csv(index=False, encoding="utf-8"),
-    "sensors_historical_data.csv",
+    "Download Sensors Historical Data",
+    make_excel(df),
+    "sensors_historical_data.xlsx",
     "text/csv",
 )
 
@@ -285,9 +293,9 @@ st.download_button(
 # df = pd.concat(dfs, ignore_index=True)
 # st.dataframe(df, use_container_width=True)
 # st.download_button(
-#     "Download Meters Historical Accumulations CSV",
-#     df.to_csv(index=False, encoding="utf-8"),
-#     "meters_historical_accumulations.csv",
+#     "Download Meters Historical Accumulations",
+#     make_excel(df),
+#     "meters_historical_accumulations.xlsx",
 #     "text/csv",
 # )
 
@@ -304,8 +312,8 @@ st.download_button(
 # df = pd.concat(dfs, ignore_index=True)
 # st.dataframe(df, use_container_width=True)
 # st.download_button(
-#     "Download Valves Historical Accumulations CSV",
-#     df.to_csv(index=False, encoding="utf-8"),
-#     "valves_historical_accumulations.csv",
+#     "Download Valves Historical Accumulations",
+#     make_excel(df),
+#     "valves_historical_accumulations.xlsx",
 #     "text/csv",
 # )
