@@ -26,6 +26,8 @@ def make_excel(df):
     return buffer
 
 
+mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
 st.set_page_config(page_title="parks-irrigation", page_icon=":national_park:")
 _, center, _ = st.columns([2, 1, 2])
 with center:
@@ -79,7 +81,7 @@ st.download_button(
     "Download Valves General Info",
     make_excel(df),
     "valves_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Valves GIS Info")
@@ -90,7 +92,7 @@ st.download_button(
     "Download Valves GIS Info",
     make_excel(df),
     "valves_gis_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Valves Status")
@@ -104,7 +106,7 @@ st.download_button(
     "Download Valves Status",
     make_excel(df),
     f"valves_status.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Meters General Info")
@@ -115,7 +117,7 @@ st.download_button(
     "Download Meters General Info",
     make_excel(df),
     "meters_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Virtual Meters General Info")
@@ -126,7 +128,7 @@ st.download_button(
     "Download Meters General Info",
     make_excel(df),
     "virtual_meters_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Programs General Info")
@@ -137,7 +139,7 @@ st.download_button(
     "Download Programs General Info",
     make_excel(df),
     "programs_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Programs Detailed Info")
@@ -148,7 +150,7 @@ st.download_button(
     "Download Programs Detailed Info",
     make_excel(df),
     "programs_detailed_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Analog Inputs General Info")
@@ -159,7 +161,7 @@ st.download_button(
     "Download Analog Inputs General Info",
     make_excel(df),
     "analog_inputs_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 
@@ -172,7 +174,7 @@ st.download_button(
     "Download Analog Inputs Current Data",
     make_excel(df),
     "analog_inputs_current_data.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Analog Inputs Historical Data")
@@ -212,7 +214,7 @@ st.download_button(
     "Download Analog Inputs Historical Data",
     make_excel(df),
     "analog_inputs_historical_data.xlsx",
-    "text/csv",
+    mime,
 )
 
 
@@ -224,7 +226,7 @@ st.download_button(
     "Download Sensors General Info",
     make_excel(df),
     "sensors_general_info.xlsx",
-    "text/csv",
+    mime,
 )
 
 
@@ -237,7 +239,7 @@ st.download_button(
     "Download Sensors Current Data",
     make_excel(df),
     "sensors_current_data.xlsx",
-    "text/csv",
+    mime,
 )
 
 st.subheader("Sensors Historical Data")
@@ -261,7 +263,7 @@ with left:
 with right:
     totime = st.time_input("Time", time(23, 59), key="totime_sensors")
 
-todatetime = make_datetime_str(fromdate, fromtime)
+todatetime = make_datetime_str(todate, totime)
 
 resp = iccpro.get_sensors_historical_data(
     fromdatetime=fromdatetime, todatetime=todatetime, resolution=3
@@ -277,7 +279,7 @@ st.download_button(
     "Download Sensors Historical Data",
     make_excel(df),
     "sensors_historical_data.xlsx",
-    "text/csv",
+    mime,
 )
 
 # st.subheader("Meters Historical Accumulations")
@@ -296,7 +298,7 @@ st.download_button(
 #     "Download Meters Historical Accumulations",
 #     make_excel(df),
 #     "meters_historical_accumulations.xlsx",
-#     "text/csv",
+#     mime,
 # )
 
 # st.subheader("Valves Historical Accumulations")
@@ -315,5 +317,5 @@ st.download_button(
 #     "Download Valves Historical Accumulations",
 #     make_excel(df),
 #     "valves_historical_accumulations.xlsx",
-#     "text/csv",
+#     mime,
 # )
