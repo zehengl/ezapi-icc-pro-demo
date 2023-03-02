@@ -116,6 +116,17 @@ st.download_button(
     "text/csv",
 )
 
+st.subheader("Programs Detailed Info")
+programs_detailed_info = iccpro.get_programs_detailed_info()
+df = pd.DataFrame(programs_detailed_info)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Programs Detailed Info CSV",
+    df.to_csv(),
+    "programs_detailed_info.csv",
+    "text/csv",
+)
+
 st.subheader("Analog Inputs General Info")
 analog_inputs_general_info = iccpro.get_analog_inputs_general_info()
 df = pd.DataFrame(analog_inputs_general_info)
@@ -126,3 +137,117 @@ st.download_button(
     "analog_inputs_general_info.csv",
     "text/csv",
 )
+
+
+st.subheader("Analog Inputs Current Data")
+resp = iccpro.get_analog_inputs_current_data()
+analog_inputs_current_data = resp["Data"]
+df = pd.DataFrame(analog_inputs_current_data)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Analog Inputs Current Data CSV",
+    df.to_csv(),
+    "analog_inputs_current_data.csv",
+    "text/csv",
+)
+
+st.subheader("Analog Inputs Historical Data")
+st.caption("2022 weekly data")
+resp = iccpro.get_analog_inputs_historical_data(
+    fromdatetime="20220101000000", todatetime="20221231235959", resolution=3
+)
+dfs = []
+for item in resp["Data"]:
+    _df = pd.DataFrame(item["Data"])
+    _df["Time"] = item["Time"]
+    dfs.append(_df)
+df = pd.concat(dfs, ignore_index=True)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Analog Inputs Historical Data CSV",
+    df.to_csv(),
+    "analog_inputs_historical_data.csv",
+    "text/csv",
+)
+
+
+st.subheader("Sensors General Info")
+sensors_general_info = iccpro.get_sensors_general_info()
+df = pd.DataFrame(sensors_general_info)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Sensors General Info CSV",
+    df.to_csv(),
+    "sensors_general_info.csv",
+    "text/csv",
+)
+
+
+st.subheader("Sensors Current Data")
+resp = iccpro.get_sensors_current_data()
+sensors_current_data = resp["Data"]
+df = pd.DataFrame(sensors_current_data)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Sensors Current Data CSV",
+    df.to_csv(),
+    "sensors_current_data.csv",
+    "text/csv",
+)
+
+st.subheader("Sensors Historical Data")
+st.caption("2022 weekly data")
+resp = iccpro.get_sensors_historical_data(
+    fromdatetime="20220101000000", todatetime="20221231235959", resolution=3
+)
+dfs = []
+for item in resp["Data"]:
+    _df = pd.DataFrame(item["Data"])
+    _df["Time"] = item["Time"]
+    dfs.append(_df)
+df = pd.concat(dfs, ignore_index=True)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Sensors Historical Data CSV",
+    df.to_csv(),
+    "sensors_historical_data.csv",
+    "text/csv",
+)
+
+# st.subheader("Meters Historical Accumulations")
+# st.caption("2022 monthly data")
+# resp = iccpro.get_meters_historical_accumulations(
+#     fromdatetime="20220101000000", todatetime="20221231235959", resolution=4
+# )
+# dfs = []
+# for item in resp["Data"]:
+#     _df = pd.DataFrame(item["Data"])
+#     _df["Time"] = item["Time"]
+#     dfs.append(_df)
+# df = pd.concat(dfs, ignore_index=True)
+# st.dataframe(df, use_container_width=True)
+# st.download_button(
+#     "Download Meters Historical Accumulations CSV",
+#     df.to_csv(),
+#     "meters_historical_accumulations.csv",
+#     "text/csv",
+# )
+
+# st.subheader("Valves Historical Accumulations")
+# st.caption("2022 monthly data")
+# resp = iccpro.get_valves_historical_accumulations(
+#     fromdatetime="20220101000000", todatetime="20221231235959", resolution=4
+# )
+# dfs = []
+# for item in resp["Data"]:
+#     _df = pd.DataFrame(item["Data"])
+#     _df["Time"] = item["Time"]
+#     dfs.append(_df)
+# df = pd.concat(dfs, ignore_index=True)
+# st.dataframe(df, use_container_width=True)
+# st.download_button(
+#     "Download Valves Historical Accumulations CSV",
+#     df.to_csv(),
+#     "valves_historical_accumulations.csv",
+#     "text/csv",
+# )
