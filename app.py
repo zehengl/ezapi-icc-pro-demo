@@ -1,8 +1,24 @@
+from datetime import time
+
+import pandas as pd
 import streamlit as st
 from icc_pro import ICC_PRO
-import pandas as pd
 
-st.set_page_config(page_title="parks-irrigation", page_icon="random")
+
+def make_datetime_str(date, time):
+    return "".join(
+        [
+            f"{date.year}",
+            f"{date.month}".zfill(2),
+            f"{date.day}".zfill(2),
+            f"{time.hour}".zfill(2),
+            f"{time.minute}".zfill(2),
+            f"{time.second}".zfill(2),
+        ]
+    )
+
+
+st.set_page_config(page_title="parks-irrigation", page_icon=":national_park:")
 _, center, _ = st.columns([2, 1, 2])
 with center:
     st.image(
@@ -16,11 +32,11 @@ use_default = st.checkbox("Use default secrets")
 
 if not use_default:
     secrets = {}
-    secrets["host"] = st.text_input("host")
-    secrets["username"] = st.text_input("username", type="password")
-    secrets["password"] = st.text_input("password", type="password")
-    secrets["client_id"] = st.text_input("client id", type="password")
-    secrets["client_secret"] = st.text_input("client secret", type="password")
+    secrets["host"] = st.text_input("Host", type="password")
+    secrets["username"] = st.text_input("Username", type="password")
+    secrets["password"] = st.text_input("Password", type="password")
+    secrets["client_id"] = st.text_input("Client ID", type="password")
+    secrets["client_secret"] = st.text_input("Client Secret", type="password")
     if (
         not secrets["host"]
         or not secrets["username"]
@@ -152,9 +168,30 @@ st.download_button(
 )
 
 st.subheader("Analog Inputs Historical Data")
-st.caption("2022 weekly data")
+st.caption("Weekly data")
+
+label, left, right = st.columns([1, 2, 2])
+with label:
+    st.text_input("", "From", disabled=True)
+with left:
+    fromdate = st.date_input("Date", key="fromdate")
+with right:
+    fromtime = st.time_input("Time", time(0, 0), key="fromtime")
+
+fromdatetime = make_datetime_str(fromdate, fromtime)
+
+label, left, right = st.columns([1, 2, 2])
+with label:
+    st.text_input("", "To", disabled=True)
+with left:
+    todate = st.date_input("Date", key="todate")
+with right:
+    totime = st.time_input("Time", time(23, 59), key="totime")
+
+todatetime = make_datetime_str(todate, totime)
+
 resp = iccpro.get_analog_inputs_historical_data(
-    fromdatetime="20220101000000", todatetime="20221231235959", resolution=3
+    fromdatetime=fromdatetime, todatetime=todatetime, resolution=3
 )
 dfs = []
 for item in resp["Data"]:
@@ -196,9 +233,48 @@ st.download_button(
 )
 
 st.subheader("Sensors Historical Data")
-st.caption("2022 weekly data")
+st.caption("Weekly data")
+
+label, left, right = st.columns([1, 2, 2])
+with label:
+    st.text_input("", "From", disabled=True)
+with left:
+    fromdate = st.date_input("Date", key="fromdate")
+with right:
+    fromtime = st.time_input("Time", time(0, 0), key="fromtime")
+
+fromdatetime = "".join(
+    [
+        f"{fromdate.year}",
+        f"{fromdate.month}".zfill(2),
+        f"{fromdate.day}".zfill(2),
+        f"{fromtime.hour}".zfill(2),
+        f"{fromtime.minute}".zfill(2),
+        f"{fromtime.second}".zfill(2),
+    ]
+)
+
+label, left, right = st.columns([1, 2, 2])
+with label:
+    st.text_input("", "To", disabled=True)
+with left:
+    todate = st.date_input("Date", key="todate")
+with right:
+    totime = st.time_input("Time", time(23, 59), key="totime")
+
+todatetime = "".join(
+    [
+        f"{todate.year}",
+        f"{todate.month}".zfill(2),
+        f"{todate.day}".zfill(2),
+        f"{totime.hour}".zfill(2),
+        f"{totime.minute}".zfill(2),
+        f"{totime.second}".zfill(2),
+    ]
+)
+
 resp = iccpro.get_sensors_historical_data(
-    fromdatetime="20220101000000", todatetime="20221231235959", resolution=3
+    fromdatetime=fromdatetime, todatetime=todatetime, resolution=3
 )
 dfs = []
 for item in resp["Data"]:
