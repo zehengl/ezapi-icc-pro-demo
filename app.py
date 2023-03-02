@@ -249,7 +249,7 @@ label, left, right = st.columns([1, 2, 2])
 with label:
     st.text_input("", "To", disabled=True, key="to_sensors")
 with left:
-    todate = st.date_input("Date", key="todate", key="todate_sensors")
+    todate = st.date_input("Date", key="todate_sensors")
 with right:
     totime = st.time_input("Time", time(23, 59), key="totime_sensors")
 
