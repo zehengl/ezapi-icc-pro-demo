@@ -172,21 +172,21 @@ st.caption("Weekly data")
 
 label, left, right = st.columns([1, 2, 2])
 with label:
-    st.text_input("", "From", disabled=True)
+    st.text_input("", "From", disabled=True, key="from_analog_inputs")
 with left:
-    fromdate = st.date_input("Date", key="fromdate")
+    fromdate = st.date_input("Date", key="fromdate_analog_inputs")
 with right:
-    fromtime = st.time_input("Time", time(0, 0), key="fromtime")
+    fromtime = st.time_input("Time", time(0, 0), key="fromtime_analog_inputs")
 
 fromdatetime = make_datetime_str(fromdate, fromtime)
 
 label, left, right = st.columns([1, 2, 2])
 with label:
-    st.text_input("", "To", disabled=True)
+    st.text_input("", "To", disabled=True, key="to_analog_inputs")
 with left:
-    todate = st.date_input("Date", key="todate")
+    todate = st.date_input("Date", key="todate_analog_inputs")
 with right:
-    totime = st.time_input("Time", time(23, 59), key="totime")
+    totime = st.time_input("Time", time(23, 59), key="totime_analog_inputs")
 
 todatetime = make_datetime_str(todate, totime)
 
@@ -237,41 +237,23 @@ st.caption("Weekly data")
 
 label, left, right = st.columns([1, 2, 2])
 with label:
-    st.text_input("", "From", disabled=True)
+    st.text_input("", "From", disabled=True, key="from_sensors")
 with left:
-    fromdate = st.date_input("Date", key="fromdate")
+    fromdate = st.date_input("Date", key="fromdate_sensors")
 with right:
-    fromtime = st.time_input("Time", time(0, 0), key="fromtime")
+    fromtime = st.time_input("Time", time(0, 0), key="fromtime_sensors")
 
-fromdatetime = "".join(
-    [
-        f"{fromdate.year}",
-        f"{fromdate.month}".zfill(2),
-        f"{fromdate.day}".zfill(2),
-        f"{fromtime.hour}".zfill(2),
-        f"{fromtime.minute}".zfill(2),
-        f"{fromtime.second}".zfill(2),
-    ]
-)
+fromdatetime = make_datetime_str(fromdate, fromtime)
 
 label, left, right = st.columns([1, 2, 2])
 with label:
-    st.text_input("", "To", disabled=True)
+    st.text_input("", "To", disabled=True, key="to_sensors")
 with left:
-    todate = st.date_input("Date", key="todate")
+    todate = st.date_input("Date", key="todate", key="todate_sensors")
 with right:
-    totime = st.time_input("Time", time(23, 59), key="totime")
+    totime = st.time_input("Time", time(23, 59), key="totime_sensors")
 
-todatetime = "".join(
-    [
-        f"{todate.year}",
-        f"{todate.month}".zfill(2),
-        f"{todate.day}".zfill(2),
-        f"{totime.hour}".zfill(2),
-        f"{totime.minute}".zfill(2),
-        f"{totime.second}".zfill(2),
-    ]
-)
+todatetime = make_datetime_str(fromdate, fromtime)
 
 resp = iccpro.get_sensors_historical_data(
     fromdatetime=fromdatetime, todatetime=todatetime, resolution=3
