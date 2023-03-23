@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png" alt="logo" height="196">
+    <img src="https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png" alt="logo" height="128">
 </div>
 
 # parks-irrigation
