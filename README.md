@@ -16,8 +16,10 @@ A study on parks irrigation data
 
     python -m venv .venv
     .venv\Scripts\activate
-    pip install -r requirements-dev.txt
+    pip install -r requirements.txt
     streamlit run streamlit_app.py
+
+> Use `pip install -r requirements-dev.txt` for development.
 
 ## Docs
 
