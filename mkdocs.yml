@@ -1,4 +1,5 @@
 site_name: parks-irrigation
+site_author: Zeheng Li
 nav:
   - Home: index.md
 theme:
@@ -35,3 +36,11 @@ plugins:
 markdown_extensions:
   - attr_list
   - md_in_html
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zehengl
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/zehengl
+repo_name: parks-irrigation
+repo_url: https://github.com/zehengl/parks-irrigation
