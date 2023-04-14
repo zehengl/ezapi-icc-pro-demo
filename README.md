@@ -19,7 +19,7 @@ A study on parks irrigation data
     pip install -r requirements.txt
     streamlit run streamlit_app.py
 
-> Use `pip install -r requirements-dev.txt` for development.
+> Use `pip install -r requirements-dev.txt` for development and docs.
 
 ## Docs
 
