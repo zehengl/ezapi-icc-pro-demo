@@ -1,7 +1,7 @@
 -r requirements.txt
 black==23.3.0
 mkdocs-git-revision-date-localized-plugin==1.2.0
-mkdocs-glightbox==0.3.2
+mkdocs-glightbox==0.3.3
 mkdocs-material==9.1.6
 mkdocs-minify-plugin==0.6.4
 mkdocs==1.4.2
