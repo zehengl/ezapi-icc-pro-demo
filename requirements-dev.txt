@@ -1,7 +1,7 @@
 -r requirements.txt
 mkdocs-git-revision-date-localized-plugin==1.2.0
 mkdocs-glightbox==0.3.4
-mkdocs-material==9.2.5
+mkdocs-material==9.2.6
 mkdocs-minify-plugin==0.7.1
 mkdocs==1.5.2
 pip-check-updates==0.22.0
