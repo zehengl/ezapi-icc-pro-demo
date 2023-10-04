@@ -2,6 +2,6 @@
 ![Logo](https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png){ width="100" }
 </figure>
 
-# parks-irrigation
+# ezapi-icc-pro-demo
 
-A study on parks irrigation data
+A Streamlit app to demo ezapi-icc-pro

@@ -2,11 +2,11 @@
     <img src="https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png" alt="logo" height="128">
 </div>
 
-# parks-irrigation
+# ezapi-icc-pro-demo
 
 ![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-A study on parks irrigation data
+A Streamlit app to demo ezapi-icc-pro
 
 ## Environment
 

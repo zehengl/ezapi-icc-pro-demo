@@ -1,4 +1,4 @@
-site_name: parks-irrigation
+site_name: ezapi-icc-pro-demo
 site_author: Zeheng Li
 nav:
   - Home: index.md
@@ -43,5 +43,5 @@ extra:
       link: https://github.com/zehengl
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/zehengl
-repo_name: parks-irrigation
-repo_url: https://github.com/zehengl/parks-irrigation
+repo_name: ezapi-icc-pro-demo
+repo_url: https://github.com/zehengl/ezapi-icc-pro-demo
