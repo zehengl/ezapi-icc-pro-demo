@@ -6,7 +6,7 @@
 
 ![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-A Streamlit app to demo ezapi-icc-pro
+A Streamlit app to demo [ezapi-icc-pro](https://pypi.org/project/ezapi-icc-pro/)
 
 ## Environment
 
