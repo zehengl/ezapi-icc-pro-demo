@@ -282,40 +282,46 @@ st.download_button(
     mime,
 )
 
-# st.subheader("Meters Historical Accumulations")
-# st.caption("2022 monthly data")
-# resp = iccpro.get_meters_historical_accumulations(
-#     fromdatetime="20220101000000", todatetime="20221231235959", resolution=4
-# )
-# dfs = []
-# for item in resp["Data"]:
-#     _df = pd.DataFrame(item["Data"])
-#     _df["Time"] = item["Time"]
-#     dfs.append(_df)
-# df = pd.concat(dfs, ignore_index=True)
-# st.dataframe(df, use_container_width=True)
-# st.download_button(
-#     "Download Meters Historical Accumulations",
-#     make_excel(df),
-#     "meters_historical_accumulations.xlsx",
-#     mime,
-# )
+st.subheader("Meters Historical Accumulations")
+st.caption("2022 monthly data")
+resp = iccpro.get_meters_historical_accumulations(
+    fromdatetime="20220101000000",
+    todatetime="20221231235959",
+    resolution=4,
+    utc=True,
+)
+dfs = []
+for item in resp["Data"]:
+    _df = pd.DataFrame(item["Data"])
+    _df["Time"] = item["Time"]
+    dfs.append(_df)
+df = pd.concat(dfs, ignore_index=True)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Meters Historical Accumulations",
+    make_excel(df),
+    "meters_historical_accumulations.xlsx",
+    mime,
+)
 
-# st.subheader("Valves Historical Accumulations")
-# st.caption("2022 monthly data")
-# resp = iccpro.get_valves_historical_accumulations(
-#     fromdatetime="20220101000000", todatetime="20221231235959", resolution=4
-# )
-# dfs = []
-# for item in resp["Data"]:
-#     _df = pd.DataFrame(item["Data"])
-#     _df["Time"] = item["Time"]
-#     dfs.append(_df)
-# df = pd.concat(dfs, ignore_index=True)
-# st.dataframe(df, use_container_width=True)
-# st.download_button(
-#     "Download Valves Historical Accumulations",
-#     make_excel(df),
-#     "valves_historical_accumulations.xlsx",
-#     mime,
-# )
+st.subheader("Valves Historical Accumulations")
+st.caption("2022 monthly data")
+resp = iccpro.get_valves_historical_accumulations(
+    fromdatetime="20220101000000",
+    todatetime="20221231235959",
+    resolution=4,
+    utc=True,
+)
+dfs = []
+for item in resp["Data"]:
+    _df = pd.DataFrame(item["Data"])
+    _df["Time"] = item["Time"]
+    dfs.append(_df)
+df = pd.concat(dfs, ignore_index=True)
+st.dataframe(df, use_container_width=True)
+st.download_button(
+    "Download Valves Historical Accumulations",
+    make_excel(df),
+    "valves_historical_accumulations.xlsx",
+    mime,
+)
