@@ -288,12 +288,17 @@ resp = iccpro.get_meters_historical_accumulations(
     fromdatetime="20220101000000",
     todatetime="20221231235959",
     resolution=4,
-    utc=True,
+    utc="true",
 )
 dfs = []
 for item in resp["Data"]:
-    _df = pd.DataFrame(item["Data"])
+    _df = pd.DataFrame(item["MetersData"])
     _df["Time"] = item["Time"]
+    _df["Type"] = "MetersData"
+    dfs.append(_df)
+    _df = pd.DataFrame(item["VirtualMetersData"])
+    _df["Time"] = item["Time"]
+    _df["Type"] = "VirtualMetersData"
     dfs.append(_df)
 df = pd.concat(dfs, ignore_index=True)
 st.dataframe(df, use_container_width=True)
@@ -310,7 +315,7 @@ resp = iccpro.get_valves_historical_accumulations(
     fromdatetime="20220101000000",
     todatetime="20221231235959",
     resolution=4,
-    utc=True,
+    utc="true",
 )
 dfs = []
 for item in resp["Data"]:
