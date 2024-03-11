@@ -1,4 +1,4 @@
 ezapi-icc-pro==0.2.0
 openpyxl==3.1.2
 plotly==5.19.0
-streamlit==1.31.1
+streamlit==1.32.0
