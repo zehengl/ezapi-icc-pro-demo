@@ -4,8 +4,6 @@ nav:
   - Home: index.md
 theme:
   name: material
-  favicon: https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png
-  logo: https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png
   font:
     text: Roboto
   palette:
