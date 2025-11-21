@@ -29,12 +29,6 @@ def make_excel(df):
 mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
 st.set_page_config(page_title="ezapi-icc-pro-demo", page_icon=":national_park:")
-_, center, _ = st.columns([2, 1, 2])
-with center:
-    st.image(
-        "https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_park-512.png",
-        use_column_width=True,
-    )
 st.title("ezapi-icc-pro-demo")
 st.caption("A Streamlit app to demo ezapi-icc-pro")
 
